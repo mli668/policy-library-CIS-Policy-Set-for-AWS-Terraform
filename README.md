@@ -12,9 +12,11 @@ For more details on how to work with these policies and to understand the Sentin
 
 We aim to validate the effectiveness of our policies by collecting diverse user feedback and understanding real-world use cases. This input will help refine our policies and enhance their overall impact.
 
-1. If you have any issues or enhancement suggestions to the library, please create [a new GitHub issue](https://github.com/hashicorp/policy-library-CIS-Policy-Set-for-AWS-Terraform/issues/new).
+1. You can submit your feedback via a [public survey](https://docs.google.com/forms/d/e/1FAIpQLScswwLMaVaRuYRGJzDjNiycwM4BUa_gAIsAE_zOPdgyFeLXCA/viewform). 
+ 
+2. If you have any issues or enhancement suggestions to the library, please create [a new GitHub issue](https://github.com/hashicorp/policy-library-CIS-Policy-Set-for-AWS-Terraform/issues/new).
 
-2. Alternatively, we welcome any contributions that improve the impact of this library! To learn more about contributing and suggesting changes to this library, refer to the [contributing guide](https://github.com/hashicorp/policy-library-CIS-Policy-Set-for-AWS-Terraform/blob/main/CONTRIBUTING.md).
+3. Alternatively, we welcome any contributions that improve the impact of this library! To learn more about contributing and suggesting changes to this library, refer to the [contributing guide](https://github.com/hashicorp/policy-library-CIS-Policy-Set-for-AWS-Terraform/blob/main/CONTRIBUTING.md).
 
 ### Policies Included
 
@@ -88,6 +90,38 @@ If you want to enable only a subset of the policies or change the [enforcement l
 The policies in each library are opinionated and depend on several Sentinel modules. To learn more about modules, please refer to the [Sentinel module](https://developer.hashicorp.com/sentinel/docs/extending/modules) documentation.
 >
 To learn more about how to configure a policy set as a [policy evaluation](https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement/manage-policy-sets#policy-evaluations), please review the Terraform Enterprise provider [documentation](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy_set#agent_enabled).
+
+## Consuming Pre-Written Sentinel Policies for CIS AWS Foundations Benchmark
+
+Following methods outlines various ways to consume and implement pre-written Sentinel policies for the CIS AWS Foundations Benchmark. These policies can be used in both Terraform Enterprise (TFE) and Terraform Cloud (TFC) environments. Below are the recommended methods for integrating these policies into your workflows.
+
+### Terraform Registry Method:
+* Navigate to the [Terraform Registry](https://registry.terraform.io/browse/policies) and select the desired Sentinel policy.
+* Copy the provided policy snippet from the registry.
+* Create a GitHub repository (or use an existing one) to store your policies.
+* Add a Sentinel.hcl file to the repository and paste the copied policy snippet(s) into this file.
+* Connect the repository to Terraform Cloud or Terraform Enterprise using the VCS (Version Control System) workflow.
+* Trigger policy execution automatically during the plan stage in Terraform Cloud or Terraform Enterprise.
+
+### Using the Public GitHub Repository:
+* Access the public GitHub repository containing the policy library.
+* You can directly use the repository as-is or fork it to customize the policies for your specific requirements.
+* If forking, ensure you sync your fork with the upstream repository periodically to stay updated with the latest changes.
+* Avoid using the default branch for consumption in Terraform Cloud or Terraform Enterprise. Instead, use the release branches for better stability.
+* Attach the repository (or your fork) to Terraform Cloud or Terraform Enterprise using the VCS workflow.
+* Run a Terraform plan to execute the policies during the post-plan stage.
+
+### Terraform Module Approach:
+* Use a dedicated Terraform module designed to manage Sentinel policy sets.
+* Provide a minimal set of variable inputs (typically four) to configure and attach the policies.
+* The module will automatically attach the latest versions of multiple policy sets to their respective workspaces.
+* Execute a Terraform plan to verify that the policy sets are applied successfully in Terraform Cloud or Terraform Enterprise.
+
+#### Notes and Best Practices
+* These policies are compatible with both Terraform Cloud (TFC) and Terraform Enterprise (TFE). Ensure your workflow is configured accordingly.
+* When using the public GitHub repository, it is recommended to use release branches for stability and avoid consuming policies directly from the default branch.
+* Regularly update your policies to align with the latest CIS AWS Foundations Benchmark standards and Terraform best practices.
+* Customize policies as needed to meet your organization's specific compliance and security requirements.
 
 ## Resources
 
