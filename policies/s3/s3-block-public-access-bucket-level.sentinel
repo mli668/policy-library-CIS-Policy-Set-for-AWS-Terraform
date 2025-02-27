@@ -50,19 +50,6 @@ is_block_public_access_settings_compliant = func(config) {
 }
 
 # Function to get compliant bucket addresses for s3 bucket inline acl definitions
-get_inline_bucket_acl_complaint_resources = func(config) {
-	const_acl_val = maps.get(maps.get(config, "acl", {}), "constant_value")
-	if const_acl_val is defined {
-		return const_acl_val is "private"
-	}
-	references = maps.get(maps.get(config, "acl", {}), "references")
-	if references is defined and tfconfig.is_variable_reference(references[0]) {
-		return tfplanfunctions.get_variable_value(tfconfig.parse_variable_name_from_reference(references[0])) is true
-	}
-	return false
-}
-
-# # Function to get complaint resource aws_s3_bucket_acl for s3 bucket
 get_bucket_acl_complaint_resources = func(config) {
 	const_acl_val = maps.get(maps.get(config, "acl", {}), "constant_value")
 	if const_acl_val is defined {
@@ -104,7 +91,7 @@ compliant_public_access_block_resources = filter config_resources.type(const.res
 
 # Check inline acl complaint resources
 complaint_inline_acl_resources = filter config_resources.type(const.resource_aws_s3_bucket).resources as _, res {
-	get_inline_bucket_acl_complaint_resources(res.config)
+	get_bucket_acl_complaint_resources(res.config)
 }
 
 # Check acl complaint resources
