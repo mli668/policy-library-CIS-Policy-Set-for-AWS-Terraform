@@ -84,7 +84,7 @@ sanitize_referenced_s3_bucket_address = func(res) {
 
 config_resources = tf.config(config.resources)
 
-# Check public access blcok complaint resources
+# Check public access block complaint resources
 compliant_public_access_block_resources = filter config_resources.type(const.resource_aws_s3_bucket_public_access_block).resources as _, res {
 	is_block_public_access_settings_compliant(res.config)
 }
