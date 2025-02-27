@@ -39,8 +39,7 @@ fetch_policies_allowing_admin_privileges = func() {
 	policy_documents = tf.state(tfstate.resources).type(const.resource_aws_iam_policy_document).mode(const.data).resources
 
 	for policy_documents as _, iam_policy_document {
-		if iam_policy_document.values is not defined or
-			iam_policy_document.values[const.statement] is not defined {
+		if iam_policy_document.values is not defined or iam_policy_document.values[const.statement] is not defined or iam_policy_document.values[const.statement] is null {
 			continue
 		}
 
