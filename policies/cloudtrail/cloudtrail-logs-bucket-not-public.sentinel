@@ -21,6 +21,7 @@ const = {
 	"resource_s3_bucket_public_access_block": "aws_s3_bucket_public_access_block",
 	"resource_aws_s3_bucket_acl":             "aws_s3_bucket_acl",
 	"constant_value":                         "constant_value",
+	"private":                                "private",
 }
 
 # Functions
@@ -31,7 +32,7 @@ get_complaint_s3_bucket_acl_resources = func(res) {
 		if acl_value == "" {
 			return true
 		}
-		return not (maps.get(acl_value, "constant_value", "") == "private")
+		return not (maps.get(acl_value, const.constant_value, "") is const.private)
 	})
 }
 
