@@ -25,6 +25,16 @@ const = {
 
 # Functions
 
+get_complaint_s3_bucket_acl_resources = func(res) {
+	return collection.reject(res, func(res) {
+		acl_value = maps.get(res, "config.acl", "")
+		if acl_value == "" {
+			return true
+		}
+		return not (maps.get(acl_value, "constant_value", "") == "private")
+	})
+}
+
 # Resolve the bucket name from the bucket expression
 # Example bucket expression - bucket_exp = {"references": ["aws_s3_bucket.bucket.id", "aws_s3_bucket.bucket"]}
 # Example bucket expression - bucket_exp = {"constant_value": "my-bucket"}
@@ -76,21 +86,8 @@ compliant_s3_bucket_public_access_block_resources = collection.reject(s3_bucket_
 		maps.get(res, "config.block_public_policy.constant_value", false))
 })
 
-compliant_s3_bucket_acl_block_resources = collection.reject(s3_bucket_acl_res, func(res) {
-	acl_value = maps.get(res, "config.acl", "")
-	if acl_value == "" {
-		return true
-	}
-	return not (maps.get(acl_value, "constant_value", "") == "private")
-})
-
-compliant_s3_bucket_inline_acl_block_resources = collection.reject(s3_bucket_inline_acl_res, func(res) {
-	acl_value = maps.get(res, "config.acl", "")
-	if acl_value == "" {
-		return true
-	}
-	return not (maps.get(acl_value, "constant_value", "") == "private")
-})
+compliant_s3_bucket_acl_block_resources = get_complaint_s3_bucket_acl_resources(s3_bucket_acl_res)
+compliant_s3_bucket_inline_acl_block_resources = get_complaint_s3_bucket_acl_resources(s3_bucket_inline_acl_res)
 
 compliant_s3_bucket_resources = compliant_s3_bucket_public_access_block_resources + compliant_s3_bucket_acl_block_resources + compliant_s3_bucket_inline_acl_block_resources
 
