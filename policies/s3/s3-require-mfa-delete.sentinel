@@ -1,4 +1,4 @@
-# This policy verifies that all general purpose s3 buckets should have MFA delete enabled in their versioning configuration
+# This policy verifies that all general purpose S3 buckets should have MFA delete enabled in their versioning configuration
 
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: BUSL-1.1

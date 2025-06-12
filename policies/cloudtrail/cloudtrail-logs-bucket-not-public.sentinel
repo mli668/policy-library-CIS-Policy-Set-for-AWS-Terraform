@@ -1,4 +1,4 @@
-# This policy requires the S3 bucket associated with a cloud trail to be not publicly accessible.
+# This policy requires the S3 bucket associated with a CloudTrail to be not publicly accessible.
 
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: BUSL-1.1
@@ -26,7 +26,7 @@ const = {
 
 # Functions
 
-get_complaint_s3_bucket_acl_resources = func(res) {
+get_compliant_s3_bucket_acl_resources = func(res) {
 	return collection.reject(res, func(res) {
 		acl_value = maps.get(res, "config.acl", "")
 		if acl_value == "" {
@@ -87,8 +87,8 @@ compliant_s3_bucket_public_access_block_resources = collection.reject(s3_bucket_
 		maps.get(res, "config.block_public_policy.constant_value", false))
 })
 
-compliant_s3_bucket_acl_block_resources = get_complaint_s3_bucket_acl_resources(s3_bucket_acl_res)
-compliant_s3_bucket_inline_acl_block_resources = get_complaint_s3_bucket_acl_resources(s3_bucket_inline_acl_res)
+compliant_s3_bucket_acl_block_resources = get_compliant_s3_bucket_acl_resources(s3_bucket_acl_res)
+compliant_s3_bucket_inline_acl_block_resources = get_compliant_s3_bucket_acl_resources(s3_bucket_inline_acl_res)
 
 compliant_s3_bucket_resources = compliant_s3_bucket_public_access_block_resources + compliant_s3_bucket_acl_block_resources + compliant_s3_bucket_inline_acl_block_resources
 

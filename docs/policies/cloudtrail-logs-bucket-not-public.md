@@ -1,4 +1,4 @@
-# Cloudtrail S3 Bucket should not be public
+# CloudTrail S3 Bucket should not be public
 
 | Provider            | Category |
 |---------------------|----------|

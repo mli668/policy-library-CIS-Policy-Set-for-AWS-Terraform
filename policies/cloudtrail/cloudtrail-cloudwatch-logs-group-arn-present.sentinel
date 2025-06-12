@@ -1,4 +1,4 @@
-# This policy requires resources of type `aws_cloudtrail` to have cloudwatch log group arn set.
+# This policy requires resources of type `aws_cloudtrail` to have CloudWatch log group ARN set.
 
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: BUSL-1.1
