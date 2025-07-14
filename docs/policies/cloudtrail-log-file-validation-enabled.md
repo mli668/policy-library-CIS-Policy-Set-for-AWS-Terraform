@@ -1,4 +1,4 @@
-# Cloudtrail LogFile Validation is enabled
+# CloudTrail Log File Validation is enabled
 
 | Provider            | Category                |
 |---------------------|-------------------------|
@@ -14,9 +14,9 @@
 
 ## Description
 
-CIS recommends for every Cloudtrail log file integrity validation is enabled. 
+CIS recommends that every CloudTrail log file integrity validation is enabled. 
 
-This policy verifies whether log file validation for a given Cloud trail resource is enabled. 
+This policy verifies whether log file validation for a given CloudTrail resource is enabled. 
 The policy fails if the `enable_log_file_validation` isn't enabled for the given `aws_cloudtrail` resource.
 
 This rule is covered by the [cloudtrail-log-file-validation-enabled](https://github.com/hashicorp/policy-library-CIS-Policy-Set-for-AWS-Terraform/blob/main/policies/cloudtrail/cloudtrail-log-file-validation-enabled.sentinel) policy.

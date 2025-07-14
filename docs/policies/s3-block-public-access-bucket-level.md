@@ -62,7 +62,7 @@ trace:
       → Module name: root
         ↳ Resource Address: aws_s3_bucket.example
           | ✗ failed
-          | Account level Amazon S3 block public access settings are not compliant. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-8 for more details.
+          | Bucket level Amazon S3 block public access settings are not compliant. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-8 for more details.
 
 
       s3-block-public-access-bucket-level.sentinel:71:1 - Rule "main"

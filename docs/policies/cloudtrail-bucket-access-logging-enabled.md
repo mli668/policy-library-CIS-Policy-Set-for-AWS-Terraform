@@ -1,4 +1,4 @@
-# Cloudtrail S3 Bucket should have access logging enabled
+# CloudTrail S3 Bucket should have access logging enabled
 
 | Provider            | Category |
 |---------------------|----------|
@@ -71,7 +71,7 @@ trace:
     → Module name: root
        ↳ Resource Address: aws_cloudtrail.cloudtrail-example
          | ✗ failed
-         | Cloudtrail S3 buckets must have access logging enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudtrail-controls.html#cloudtrail-7 for more details.
+         | CloudTrail S3 buckets must have access logging enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudtrail-controls.html#cloudtrail-7 for more details.
 
 
     cloudtrail-bucket-access-logging-enabled.sentinel:74:1 - Rule "main"

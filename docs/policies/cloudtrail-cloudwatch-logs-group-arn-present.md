@@ -1,4 +1,4 @@
-# Cloudtrail Cloudwatch Logs Group Arn is set
+# CloudTrail CloudWatch Logs Group ARN is set
 
 | Provider            | Category                |
 |---------------------|-------------------------|
@@ -14,7 +14,7 @@
 
 ## Description
 
-CIS recommends for every CloudTrail trails should be integrated with Amazon CloudWatch Logs
+CIS recommends that every CloudTrail trail should be integrated with Amazon CloudWatch Logs
 
 This policy checks whether CloudTrail trails are configured to send logs to CloudWatch Logs. 
 The policy fails if the `cloud_watch_logs_group_arn` attribute of the `aws_cloudtrail` resource is empty.

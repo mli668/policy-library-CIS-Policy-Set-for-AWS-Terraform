@@ -1,4 +1,4 @@
-# This policy mandates all requests to 'aws_s3_bucket' resources to use ssl using 'aws_s3_bucket_policy' resource.
+# This policy mandates all requests to 'aws_s3_bucket' resources to use SSL using 'aws_s3_bucket_policy' resource.
 
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: BUSL-1.1
